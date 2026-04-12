@@ -1026,10 +1026,9 @@ def section_skills():
     """, unsafe_allow_html=True)
 
     col1, col2 = st.columns(2, gap="large")
-    left_skills  = [("Python", 92), ("Machine Learning", 88), ("NLP", 84), ("Pandas / NumPy", 92), ("Streamlit", 90)]
-    right_skills = [("Scikit-learn", 88), ("Power BI", 82), ("RAG Systems", 80), ("Deep Learning", 80), ("LangChain", 75)]
+    left_skills  = [("Python", 92), ("Machine Learning", 88), ("NLP", 84), ("Power BI", 82), ("Deep Learning", 80), ("LangChain", 75)]
 
-    for col, skills in [(col1, left_skills), (col2, right_skills)]:
+    for col, skills in [(col1, left_skills)]:
         with col:
             st.markdown('<div class="glass-card">', unsafe_allow_html=True)
             for skill, pct in skills:
