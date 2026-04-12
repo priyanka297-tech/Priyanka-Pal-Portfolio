@@ -743,8 +743,8 @@ def render_sidebar():
             ("🛠️", "Technical Skills"),
             ("🚀", "Projects"),
             ("💼", "Experience"),
-            ("📜", "Certifications & Achievements"),
-            ("🎓", "Education & Currently Exploring"),
+            ("📜", "Certificates & Awards"),
+            ("🎓", "Education & Learning"),
             ("📬", "Contact"),
         ]
 
