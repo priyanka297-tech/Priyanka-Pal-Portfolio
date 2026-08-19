@@ -1,3 +1,7 @@
+from turtle import width
+
+from fastapi import background
+from networkx import display
 import streamlit as st
 import streamlit.components.v1 as components
 import base64
@@ -183,6 +187,7 @@ p, div, span, li {{ font-family: 'DM Sans', sans-serif; line-height: 1.7; }}
 .section-wrapper {{
     animation: fadeInUp 0.7s ease both;
     padding-bottom: 1.5rem;
+    
 }}
 
 /* ── Glass card ── */
@@ -638,7 +643,7 @@ p, div, span, li {{ font-family: 'DM Sans', sans-serif; line-height: 1.7; }}
 .nav-sub {{
     font-size: 0.72rem;
     color: {C['muted']};
-    padding: 0 1.2rem 1.2rem;
+    padding:  1.2rem 1.2rem;
     font-family: 'JetBrains Mono', monospace;
     display: block;
     border-bottom: 1px solid {C['border']};
@@ -668,6 +673,7 @@ p, div, span, li {{ font-family: 'DM Sans', sans-serif; line-height: 1.7; }}
     font-family: 'JetBrains Mono', monospace;
 }}
 
+
 /* ── Sidebar buttons ── */
 [data-testid="stSidebar"] .stButton > button {{
     background: transparent !important;
@@ -685,12 +691,27 @@ p, div, span, li {{ font-family: 'DM Sans', sans-serif; line-height: 1.7; }}
     width: 100% !important;
     margin: 1px 0 !important;
 }}
+/* Align button content to the left */
+[data-testid="stSidebar"] .stButton > button > div {{
+    width: 100% !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+}}
+
+/* Keep icon + text aligned together */
+[data-testid="stSidebar"] .stButton > button > div > p {{
+    width: 100% !important;
+    text-align: left !important;
+    margin: 0 !important;
+}}
+
 [data-testid="stSidebar"] .stButton > button:hover {{
     background: {C['accent1']}20 !important;
     color: {C['text']} !important;
     transform: none !important;
     box-shadow: none !important;
 }}
+
 [data-testid="stSidebar"] .stButton > button:focus:not(:active) {{
     background: {C['accent1']}28 !important;
     color: {C['accent1']} !important;
@@ -698,7 +719,6 @@ p, div, span, li {{ font-family: 'DM Sans', sans-serif; line-height: 1.7; }}
     border-left: 3px solid {C['accent1']} !important;
     border-radius: 0 10px 10px 0 !important;
 }}
-
 .stTextInput > div > div > input,
 .stTextArea > div > div > textarea {{
     background: {C['card']} !important;
@@ -936,7 +956,7 @@ def section_hero():
         (c1, "🚀", "10+", "Projects"),
         (c2, "🏆", "3+",  "Awards"),
         (c3, "📜", "5+",  "Certifications"),
-        (c4, "⭐", "8.4", "CGPA"),
+        (c4, "⭐", "8.6", "CGPA"),
     ]:
         col.markdown(f"""
         <div class="glass-card" style="text-align:center; padding:1.2rem 1rem;">
@@ -1026,7 +1046,7 @@ def section_skills():
     """, unsafe_allow_html=True)
 
     col1, col2 = st.columns(2, gap="large")
-    left_skills  = [("Python", 92), ("Machine Learning", 88), ("NLP", 84), ("Power BI", 82), ("Deep Learning", 80), ("LangChain", 75)]
+    left_skills  = [("Python", 92), ("Machine Learning", 92), ("NLP", 84), ("Power BI", 90), ("Deep Learning", 80), ("LangChain", 75)]
 
     for col, skills in [(col1, left_skills)]:
         with col:
@@ -1056,47 +1076,104 @@ def section_projects():
     """, unsafe_allow_html=True)
 
     projects = [
+        {
+        "title": "Multi-Agent AI Research & Automation System",
+        "desc": "Built a multi-agent AI system using LangChain and LLMs where specialized agents collaborate to perform research, information retrieval, content generation, and task orchestration. Implemented agent communication, memory management, and external API integrations to automate complex workflows.",
+        "impact": "⚡ Reduced manual research effort by ~60% · Improved task completion efficiency by ~40%",
+        "tags": ["Python", "Generative AI", "LLM", "LangChain", "Multi-Agent Systems", "RAG", "API Integration", "Prompt Engineering"],
+        "cat": ["Agents","GenAI"],
+        "emoji": ["🤖"],
+        "Github": "https://github.com/priyanka297-tech/Multi-Agent-Model"
+        },
+            
         {"title": "Rossmann Sales Forecasting & AI Dashboard",
          "desc": "End-to-end time-series forecasting system predicting store-level sales for Rossmann pharmacies. Features an interactive Streamlit dashboard with AI-powered business recommendations.",
          "impact": "⚡ 94% forecast accuracy · Reduced inventory waste by ~18%",
          "tags": ["Python","EDA","Streamlit","Feature Engineering","LLM","Scikit-learn","LangChain","MistralAI"],
-         "cat": "ML", "emoji": "📈"},
+         "cat": "DA/DS", 
+         "emoji": "📈",
+        "Github": "https://github.com/priyanka297-tech/Rossmann-Sales-Analysis"
+       },
+        
+        {
+           
+        "title": "Smart-E-Commerce-Inventory-Product-Management-Platform", 
+        "desc": "AI-driven inventory and product management platform for e-commerce businesses, utilizing machine learning for demand forecasting, automated restocking, and an interactive dashboard for real-time insights.",
+        "impact": "⚡ 89% demand forecast accuracy · Reduced stockouts by ~25%",
+        "tags": ["Python","FastAPI","ML","Streamlit","EDA","Feature Engineering","Scikit-learn","OpenAI API","MistralAI"],
+        "cat": "FastAPI", 
+        "emoji": "🛒",
+        "Github": "https://github.com/priyanka297-tech/Smart-E-Commerce-Inventory-Product-Management-Platform"
+        },
+    
         {"title": "Customer Churn Prediction System",
          "desc": "ML classification pipeline predicting telecom customer churn with advanced feature engineering, SMOTE balancing, and a business-ready dashboard for retention teams.",
          "impact": "⚡ 92% AUC-ROC · Identified top 3 churn drivers",
          "tags": ["Python","XGBoost","Scikit-learn","SMOTE","EDA","Streamlit"],
-         "cat": "ML", "emoji": "📉"},
+         "cat": ["ML","DA/DS"], 
+         "emoji": "📉",
+        "Github": "https://github.com/priyanka297-tech"
+        },
+
         {"title": "Amazon Review Sentiment Analysis",
          "desc": "NLP pipeline performing multi-class sentiment classification on Amazon product reviews using transformer models with an interactive sentiment explorer UI.",
          "impact": "⚡ 91% accuracy · Real-time sentiment scoring dashboard",
          "tags": ["Python","NLP","Transformers","TF-IDF","Streamlit","LSTM","GRU"],
-         "cat": "NLP", "emoji": "💬"},
+         "cat": "NLP",  
+         "emoji": "💬",
+        "Github": "https://github.com/priyanka297-tech/Amazon-Product-Reviews-Analysis"
+        },
+        
         {"title": "Weather & News Intelligence Assistant",
          "desc": "RAG-powered conversational assistant combining real-time weather APIs and live news feeds with LLM reasoning to deliver context-aware, actionable intelligence.",
          "impact": "⚡ Sub-2s response · Multi-source RAG fusion",
          "tags": ["Python","RAG","LangChain","OpenAI API","Streamlit","MistralAI"],
-         "cat": "RAG", "emoji": "🌤️"},
+         "cat": ["RAG","GenAI"], 
+         "emoji": "🌤️",
+        "Github": "https://github.com/priyanka297-tech/Weather-News-Summarization-Agents"
+        },
+        
         {"title": "Movie Info Extractor (RAG System)",
          "desc": "Retrieval-Augmented Generation system that extracts structured movie information from unstructured text corpora, enabling natural language Q&A over large movie databases.",
          "impact": "⚡ 87% retrieval precision · Handles 10K+ movie corpus",
          "tags": ["Python","RAG","LangChain","FAISS","GPT","ChromaDB","Groq API"],
-         "cat": "RAG", "emoji": "🎬"},
+         "cat": ["RAG","GenAI"], "emoji": "🎬",
+        "Github": "https://github.com/priyanka297-tech/Movie-Information-Extractor-AI-Model"
+        },
+        
         {"title": "AI Story Generator (LLM + Groq)",
          "desc": "AI-powered storytelling application generating creative, context-aware stories using LLMs via Groq API with dynamic prompt engineering and an interactive Streamlit UI.",
          "impact": "⚡ Real-time generation · Context-aware narratives · Interactive UI",
          "tags": ["Python","LLM","Groq API","Streamlit","Prompt Engineering","NLP"],
-         "cat": "NLP", "emoji": "📖"},
+         "cat": ["NLP", "GenAI"], 
+         "emoji": "📖",
+        "Github": "https://github.com/priyanka297-tech/AI-Storytelling-Application"
+        },
+
         {"title": "Next Word Prediction System (LSTM)",
          "desc": "Deep learning NLP model predicting the next word in a sequence using LSTM networks, with text preprocessing, tokenization, and a Streamlit interface.",
          "impact": "⚡ Sequence learning with LSTM · Real-time predictions · NLP pipeline",
          "tags": ["Python","LSTM","GRU","TensorFlow","Keras","NLP","Streamlit"],
-         "cat": "NLP", "emoji": "🔮"},
+         "cat": "NLP", 
+         "emoji": "🔮",
+        "Github": "https://github.com/priyanka297-tech/Next-Word-Prediction-System"
+        },
+        
+        {
+        "title": "Netflix Movie Recommendation System",
+         "desc": "Interactive BI dashboard built with Streamlit, integrating AI-driven insights and visualizations to analyze Netflix movie data, uncover trends, and provide personalized recommendations based on user preferences.",
+            "impact": "⚡ Personalized recommendations · User-friendly interface",
+            "tags": ["Python","Streamlit","Pandas","Scikit-learn","EDA","Data Visualization"],
+            "cat": "NLP", "emoji": "🎥",
+        "Github": "https://github.com/priyanka297-tech/Netflix-Movie-Recommendation-System"
+        }
     ]
 
-    filters = ["All", "ML", "NLP", "RAG"]
+
+    filters = ["All", "DA/DS","ML", "NLP", "RAG","Agents","GenAI", "FastAPI"]
     cols_f = st.columns(len(filters))
     for i, f in enumerate(filters):
-        label = f"● {f}" if st.session_state.project_filter == f else f"○ {f}"
+        label = f" {f}" if st.session_state.project_filter == f else f" {f}"
         if cols_f[i].button(label, key=f"filter_{f}", use_container_width=True):
             st.session_state.project_filter = f
             st.rerun()
@@ -1112,12 +1189,12 @@ def section_projects():
             tags_html = "".join([f'<span class="tech-tag">{t}</span>' for t in proj["tags"]])
             st.markdown(f"""
             <div class="project-card">
-              <div style="font-size:1.8rem; margin-bottom:0.4rem;">{proj['emoji']}</div>
+              <div style="font-size:1.6rem; margin-bottom:0.4rem;">{proj['emoji']}</div>
               <div class="project-title">{proj['title']}</div>
               <div class="project-desc">{proj['desc']}</div>
               <div class="project-impact">{proj['impact']}</div>
               <div style="margin-bottom:0.8rem;">{tags_html}</div>
-              <a class="btn-secondary" href="https://github.com/priyanka297-tech" target="_blank"
+              <a class="btn-secondary" href="{proj['Github']}" target="_blank"
                  style="font-size:0.78rem; padding:0.32rem 0.9rem; display:inline-flex; align-items:center; gap:0.4rem;">
                 {GH_LOGO_SM} GitHub
               </a>
@@ -1136,18 +1213,19 @@ def section_experience():
     """, unsafe_allow_html=True)
 
     for exp in [
-        {"role": "Applied AI Trainee", "company": "Edunet Foundation",
-         "period": "Sep 2023 – Jan 2024", "emoji": "🤖",
+        {"role": "Data Analyst", "company": "Edunet Foundation",
+         "period": "Sep 2024 – Dec 2024", "emoji": "🤖",
          "bullets": ["Developed end-to-end AI/ML projects under mentorship of industry professionals",
                      "Built and deployed many AI applications using OpenAI",
                      "Contributed to curriculum development for AI training programs",
                      "Presented project demos and technical walkthroughs to evaluation panels"]},
-        {"role": "iOS Developer Intern", "company": "SKLZTECT LLP",
-         "period": "Mar 2024 – Dec 2025", "emoji": "📱",
-         "bullets": ["Designed and developed user-facing iOS app features using Swift & Xcode",
-                     "Collaborated with UI/UX team to implement pixel-perfect interface designs",
-                     "Analyzed user interaction data using Python to identify behavioral patterns",
-                     "Participated in code reviews and agile sprint planning sessions"]},
+        {"role": " Data & Technology Intern", "company": "SKLZTECT LLP",
+         "period": "Mar 2025 – Dec 2025", "emoji": "📱",
+         "bullets": ["Explored datasets with Python, Pandas, and NumPy, uncovering trends and insights to support data-driven decisions.",
+                     "Developed predictive models using Scikit-learn, incorporating feature engineering, validation, and performance assessment."]},
+        {"role": " Data Science Trainer, Freelance Project", "company": "GrepR Consulting",
+                 "period": "June 2026 – July 2026", "emoji": "📱",
+                 "bullets": ["Conducted Python, AI/ML, and Data Science sessions across Gurgaon campuses, emphasizing hands-on projects, practical applications, and industry-oriented learning."]},
     ]:
         st.markdown(f"""
         <div class="glass-card" style="margin-bottom:1.2rem;">
@@ -1194,7 +1272,7 @@ def section_education_and_learning():
                padding:0.45rem 1rem;">
             <span style="font-family:'Syne',sans-serif; font-size:1.5rem; font-weight:800;
                  background:{C['grad1']}; -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-                 background-clip:text; line-height:1;">8.4</span>
+                 background-clip:text; line-height:1;">8.6</span>
             <span style="font-size:0.7rem; color:{C['muted']}; text-transform:uppercase;
                  letter-spacing:0.1em; font-family:'JetBrains Mono',monospace; line-height:1.3;">CGPA</span>
           </div>
