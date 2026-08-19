@@ -1028,10 +1028,13 @@ def section_skills():
     <div class="glass-card" style="margin-bottom:1.4rem; text-align:center;">
       <div class="skill-cat-title" style="margin-bottom:0.8rem;">🏷️ Full Tech Stack</div>
       {"".join([f'<span class="skill-pill">{s}</span>' for s in [
-        "Python","SQL","Pandas","NumPy","Feature Engineering","EDA","Scikit-learn","TensorFlow","Keras",
-        "LSTM","GRU","NLP","RAG","LangChain","Streamlit","Power BI","Git","Jupyter","VS Code",
-        "Matplotlib","Seaborn","FastAPI","Machine Learning","Deep Learning","OpenAI API",
-        "FAISS","ChromaDB","BERT","XGBoost",
+        "Python", "SQL", "Pandas", "NumPy", "Data Manipulation", "Data Transformation", "REST APIs", "Machine Learning", 
+        "Scikit-learn", "Predictive Modeling", "Feature Engineering", "Model Evaluation", 
+        "Natural Language Processing (NLP)", "Deep Learning", "TensorFlow", "Generative AI", "LLMs", 
+        "Prompt Engineering", "AI Evaluation", "ETL", "Data Pipelines", "Data Processing", "Data Integration", 
+        "Data Modeling", "Snowflake", "Microsoft Azure", "MLOps", "Model Deployment", "CI/CD", "Data Products", "AI-Powered Solutions", 
+        "Feedback Summarization", "Knowledge Bots", "Intelligent Assistants", "MySQL", "MongoDB", "Git", 
+        "GitHub", "GitLab", "Jupyter Notebook", "VS Code", "Streamlit", "Cloud Deployment",
       ]])}
     </div>
     """, unsafe_allow_html=True)
