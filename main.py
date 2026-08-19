@@ -1475,9 +1475,9 @@ def main():
             section_projects()
         elif section == "Experience":
             section_experience()
-        elif section == "Education & Currently Exploring":
+        elif section == "Education & Learning":
             section_education_and_learning()
-        elif section == "Certifications & Achievements":
+        elif section == "Certifications & Awards":
             section_certs_and_achievements()
         elif section == "Contact":
             section_contact()
