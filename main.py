@@ -763,8 +763,8 @@ def render_sidebar():
             ("🛠️", "Technical Skills"),
             ("🚀", "Projects"),
             ("💼", "Experience"),
-            ("📜", "Certifications & Achievements"),
-            ("🎓", "Education & Currently Exploring"),
+            ("📜", "Certificates & Awards"),
+            ("🎓", "Education & Learning"),
             ("📬", "Contact"),
         ]
 
@@ -1042,7 +1042,7 @@ def section_skills():
 
     st.markdown(f"""
     <div style="font-family:'Syne',sans-serif; font-size:1rem; font-weight:700;
-         color:{C['text']}; margin-bottom:0.8rem;">📊 Proficiency — Top 10 Skills</div>
+         color:{C['text']}; margin-bottom:0.8rem;">📊 Proficiency — Top 5 Skills</div>
     """, unsafe_allow_html=True)
 
     col1, col2 = st.columns(2, gap="large")
