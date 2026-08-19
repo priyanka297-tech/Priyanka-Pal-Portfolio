@@ -1,5 +1,3 @@
-from turtle import width
-
 from fastapi import background
 from networkx import display
 import streamlit as st
